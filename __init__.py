@@ -557,7 +557,7 @@ class Xiaonei(object):
         if next is not None:
             args['next'] = next
 
-        return 'http://app.xiaonei.com/apps/add.do' % urllib.urlencode(args)
+        return 'http://app.xiaonei.com/apps/add.do?%s' % urllib.urlencode(args)
 
 
     def get_authorize_url(self, next=None, next_cancel=None):
