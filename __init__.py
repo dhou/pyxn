@@ -63,7 +63,8 @@ For more information, see
 Home Page: http://code.google.com/p/pyxn
 Developer Wiki: http://code.google.com/p/pyxn/w/list
 
-Response format defaults to XML, since Xiaonei API currently only returns XML
+Response format defaults to XML, since Xiaonei API currently doesn't return JSON
+for some of the API calls
 May switch to JSON when Xiaonei supports it
 """
 
