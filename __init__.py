@@ -378,12 +378,18 @@ class Xiaonei(object):
 
         self.auth = AuthProxy(self, 'xiaonei.auth')
 
+    def unicode_encode(self, str):
+        """
+        @author: houyr
+        Detect if a string is unicode and encode as utf-8 if necessary
+        """
+        return isinstance(str, unicode) and str.encode('utf-8') or str
 
     def _hash_args(self, args, secret=None):
         """Hashes arguments by joining key=value pairs, appending a secret, and then taking the MD5 hex digest."""
         #@author: houyr
         #Fix for UnicodeEncodeError
-        hasher = md5.new(''.join(['%s=%s' % (x.encode("utf-8"), unicode(args[x]).encode("utf-8")) for x in sorted(args.keys())]))
+        hasher = md5.new(''.join(['%s=%s' % (self.unicode_encode(x), self.unicode_encode(args[x])) for x in sorted(args.keys())]))
         if secret:
             hasher.update(secret)
         elif self.secret:
@@ -504,7 +510,7 @@ class Xiaonei(object):
         """
         if isinstance(params, dict):
             params = params.items()
-        return urllib.urlencode([(k, isinstance(v, unicode) and v.encode('utf-8') or v)
+        return urllib.urlencode([(k, self.unicode_encode(v))
                           for k, v in params])
 
     def __call__(self, method, args=None, secure=False):
