@@ -78,7 +78,7 @@ def require_login(next=None, internal=None):
 
             if not xn.check_session(request):
                 #If user has never logged in before, the get_login_url will redirect to the TOS page
-                logging.debug('user never logged in, redirect to login url')
+#                logging.debug('user never logged in, redirect to login url')
                 return xn.redirect(xn.get_login_url(next=next))
 
             if internal and request.method == 'GET' and xn.app_name:

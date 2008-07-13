@@ -51,7 +51,6 @@
 # ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-import logging
 
 """
 Python bindings for the Xiaonei API (pyxn - http://code.google.com/p/pyxn)
@@ -68,6 +67,7 @@ for some of the API calls
 May switch to JSON when Xiaonei supports it
 """
 
+import logging
 import md5
 import sys
 import time
@@ -519,7 +519,7 @@ class Xiaonei(object):
         #Fix for bug of UnicodeEncodeError
         #post_data = urllib.urlencode(self._build_post_args(method, args))
         post_data = self.unicode_urlencode(self._build_post_args(method, args))
-        logging.debug('calling api with data: %s' % post_data)
+#        logging.debug('calling api with data: %s' % post_data)
         if self.proxy:
             proxy_handler = urllib2.ProxyHandler(self.proxy)
             opener = urllib2.build_opener(proxy_handler)
@@ -629,7 +629,7 @@ class Xiaonei(object):
 
         if request.method == 'POST':
             params = self.validate_signature(request.POST)
-            logging.debug('checksession, post params are: %s' % params)
+#            logging.debug('checksession, post params are: %s' % params)
         else:
             if 'installed' in request.GET:
                 self.added = True
