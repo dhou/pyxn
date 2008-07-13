@@ -389,6 +389,10 @@ class Xiaonei(object):
 
     def _parse_response_item(self, node):
         """Parses an XML response node from Xiaonei."""
+        # temp fix for friends_getAppUsers_response
+        if node.nodeName == 'friends_getAppUsers_response':
+            return self._parse_response_list(node)
+        
         if node.nodeType == node.DOCUMENT_NODE and \
             node.childNodes[0].hasAttributes() and \
             node.childNodes[0].hasAttribute('list') and \
