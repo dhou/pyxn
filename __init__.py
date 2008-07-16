@@ -132,6 +132,8 @@ METHODS = {
         'getFriends': [],
 
         'getAppUsers': [],
+        
+        'get': [],
     },
 
     # notifications methods
