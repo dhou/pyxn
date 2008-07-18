@@ -355,7 +355,7 @@ class Xiaonei(object):
         self.secret = None
         self.uid = None
         self.page_id = None
-        self.in_canvas = False
+        self.in_iframe = False
         self.added = False
         self.app_name = app_name
         self.callback_path = callback_path
@@ -616,7 +616,7 @@ class Xiaonei(object):
         (either log the user in or have him add the application).
 
         """
-        self.in_canvas = (request.POST.get('xn_sig_in_canvas') == '1')
+        self.in_iframe = (request.POST.get('xn_sig_in_iframe') == '1')
 
         if self.session_key and (self.uid or self.page_id):
             return True
@@ -644,8 +644,8 @@ class Xiaonei(object):
         if not params:
             return False
 
-        if params.get('in_canvas') == '1':
-            self.in_canvas = True
+        if params.get('in_iframe') == '1':
+            self.in_iframe = True
 
         if params.get('added') == '1':
             self.added = True

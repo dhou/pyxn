@@ -99,13 +99,13 @@ else:
         # should *just work*.
 
         def redirect_to(self, url):
-            """Wrap Pylons' redirect_to function so that it works in_canvas.
+            """Wrap Pylons' redirect_to function so that it works not in_iframe.
 
             By the way, this won't work until after you call
             check_session().
 
             """
-            if self.in_canvas:
+            if not self.in_iframe:
                 raise CanvasRedirect(url)
             pylons_redirect_to(url)
 
