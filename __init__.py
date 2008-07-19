@@ -433,7 +433,7 @@ class Xiaonei(object):
     def _check_error(self, response):
         """Checks if the given Xiaonei response is an error, and then raises the appropriate exception."""
         if type(response) is dict and response.has_key('error_code'):
-            raise XiaoneiError(response['error_code'], response['error_msg'], response['request_args'])
+            raise XiaoneiError(response['error_code'], response['error_msg'], response.get('request_args','no request_args found'))
 
 
     def _build_post_args(self, method, args=None):
