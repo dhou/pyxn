@@ -408,7 +408,8 @@ class Xiaonei(object):
         elif len(filter(lambda x: x.nodeType == x.ELEMENT_NODE, node.childNodes)) > 0:
             return self._parse_response_dict(node)
         else:
-            return ''.join(node.data for node in node.childNodes if node.nodeType == node.TEXT_NODE)
+            #fix: xiaonei uses cdata section for user name in friends.getFriends
+            return ''.join(node.data for node in node.childNodes if node.nodeType in [node.TEXT_NODE, node.CDATA_SECTION_NODE])
 
 
     def _parse_response_dict(self, node):
