@@ -172,6 +172,34 @@ METHODS = {
             ('uid', int, ['optional']),
         ],
     },
+    
+    # invitations methods
+	# @DaNmarner, @freefis
+    'invitations': {
+        'getOsInfo': [
+            ('invite_ids',list,[]),
+        ],
+        'getUserOsInviteCnt': [
+            ('uids',list,[]),
+        ],
+    },
+    
+    # admin methods
+	# @DaNmarner, @freefis
+    'admin': {
+        'getAllocation':[],
+    },
+    
+    #payment methods
+    'pay': {
+        'getToken': [
+            ('order_id', int, []),
+            ('amount', int, []),
+        ],
+        'isComplete': [
+            ('order_id', int, []),
+        ],
+    },
 }
 
 class Proxy(object):
