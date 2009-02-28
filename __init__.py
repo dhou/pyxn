@@ -133,6 +133,8 @@ METHODS = {
 
         'getAppUsers': [],
         
+        'getAppFriends': [],
+        
         'get': [],
     },
 
@@ -151,7 +153,6 @@ METHODS = {
         'setXNML': [
             ('uid', int, ['optional']),
             ('profile', str, ['optional']),
-            ('profile_action', str, ['optional']),
         ],
 
         'getXNML': [
@@ -192,14 +193,24 @@ METHODS = {
     
     #payment methods
     'pay': {
-        'getToken': [
+        'regOrder':[
             ('order_id', int, []),
             ('amount', int, []),
         ],
-        'isComplete': [
+        'isCompleted':[
             ('order_id', int, []),
-        ],
+        ]
     },
+    
+    'pay4Test': {
+        'regOrder':[
+            ('order_id', int, []),
+            ('amount', int, []),
+        ],
+        'isCompleted':[
+            ('order_id', int, []),
+        ]
+    }
 }
 
 class Proxy(object):
