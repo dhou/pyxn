@@ -146,6 +146,10 @@ METHODS = {
             ('to_ids', list, []),
             ('notification', str, []),
         ],
+        'sendemail': [
+            ('recipients', list, []),
+            ('template_id', int, []),
+        ],
     },
 
     # profile methods
@@ -172,6 +176,10 @@ METHODS = {
         'isAppAdded': [
             ('uid', int, ['optional']),
         ],
+        'hasAppPermission': [
+            ('ext_perm', str, []),
+            ('uid', int, ['optional']),
+        ],
     },
     
     # invitations methods
@@ -181,6 +189,9 @@ METHODS = {
             ('invite_ids',list,[]),
         ],
         'getUserOsInviteCnt': [
+            ('uids',list,[]),
+        ],
+        'getIsInviters': [
             ('uids',list,[]),
         ],
     },
